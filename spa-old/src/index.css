@@ -1,0 +1,105 @@
+:root {
+  /* Colors */
+  /* --color-black: rgba(0, 0, 0, 0.9);
+  --color-white: rgba(255, 255, 255, 0.9);
+  --color-gray-light: #eeeeee;
+  --color-gray-dark: #222222;
+  --color-green-light: #66bb6a;
+  --color-green-dark: #388e3c;
+  --color-border-light: #dddddd;
+  --color-border-dark: #555555;
+  color-scheme: light dark;
+  color: var(--color-black);
+  background-color: var(--color-white); */
+
+  /* Fonts */
+  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  font-weight: 400; */
+
+  /* Layout */
+  --layout-padding: 20px;
+  --header-height: 60px;
+  --sidebar-width: 180px;
+
+  /* Other */
+  --border-radius-sm: 3px;
+  --border-radius-lg: 6px;
+}
+
+/* * {
+  box-sizing: border-box;
+} */
+
+/* a {
+  font-weight: 500;
+  color: var(--color-green-dark);
+  text-decoration: inherit;
+} */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+:is(p, h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+
+:is(p, h1, h2, h3, h4, h5, h6):last-child {
+  margin-bottom: 0;
+}
+
+/* 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5em;
+}
+
+h1 {
+  font-size: 3em;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5,
+h6 {
+  font-size: 1em;
+} */
+
+.prose > :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    color: var(--color-white);
+    background-color: var(--color-black);
+  }
+  a {
+    color: var(--color-green-light);
+  }
+  button {
+    background-color: var(--color-green-light);
+  }
+  input {
+    border-color: var(--color-border-dark);
+  }
+} */

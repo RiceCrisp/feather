@@ -1,0 +1,57 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - back
+    
+
+  api:
+    depends_on:
+      - db
+    build:
+      dockerfile: Dockerfile
+      context: "./api"
+    env_file: 
+      - .env
+    environment:
+      - DB_URI=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - SPA_URL=${SPA_URL}
+    ports:
+      - ${API_PORT}:${API_PORT}
+    volumes:
+      - ./api:/code
+      - /code/node_modules
+    networks:
+      - back
+
+  spa:
+    depends_on:
+      - api
+    build:
+      dockerfile: Dockerfile
+      context: "./spa"
+    env_file: 
+      - .env
+    ports:
+      - ${SPA_PORT}:${SPA_PORT}
+    volumes:
+      - ./spa:/code
+      - /code/node_modules
+    networks:
+      - back
+
+networks:
+  back:
+volumes:
+  postgres_data:
